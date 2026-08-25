@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root{
+  --paper:#F8F4EC;
+  --green:#6F8253;
+  --purple:#D9C2F1;
+  --pink:#F7C9D8;
+  --text:#242424;
+  --note:#F8E08A;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #F8F4EC;
+
+  background-image:
+    linear-gradient(rgba(0,0,0,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.05) 1px, transparent 1px);
+
+  background-size: 28px 28px;
+
+  color: #2B2B2B;
+
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.playfair{
+  font-family: "Playfair Display", serif;
+}
+
+.caveat{
+  font-family: "Caveat", cursive;
+}
+
+.poppins{
+    font-family:"Poppins",sans-serif;
+}
+
+.paper-shadow{
+    box-shadow:
+    0 10px 30px rgba(0,0,0,.12);
+}
+
+.paper{
+    background:white;
+    border:1px solid #ece4d8;
+}
+
+.handwriting{
+    transform:rotate(-2deg);
+}
