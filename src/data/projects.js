@@ -1,25 +1,43 @@
 const projects = [
   {
     title: "AgriTrust",
-    subtitle: "Crop Recommendation System",
+    subtitle: "Farm-to-Restaurant Supply Intelligence Platform",
     image: "/projects/agritrust.png",
-    tech: ["MERN", "Machine Learning"],
+    tech: ["MongoDB", "React", "Express.js", "Tailwind CSS", "Python"],
     description:
-      "Developed a crop recommendation system using Machine Learning. Implemented authentication and chatbot support for farmers.",
+      "Developed a platform connecting farmers and restaurants for product listing and order management, with crop recommendation and chatbot features.",
     github: "#",
     demo: "#",
   },
 
   {
-    title: "Employee Service Management",
-    subtitle: ".NET Web Application",
-    image: "/projects/employee.png",
-    tech: [".NET", "SQL Server"],
+    title: "VeriTest",
+    subtitle: "AI-Driven Test Automation & Compliance Platform",
+    image: "/projects/veritest.png",
+    tech: ["Python", "Selenium", "React", "NLP", "MySQL"],
     description:
-      "Developed features for employee request management, database integration, testing, and debugging.",
+      "Developed an AI-based platform that converts software requirements into automated Selenium tests and provides a dashboard for test coverage and compliance metrics.",
+    github: "#",
+    demo: "#",
+  },
+
+  {
+    title: "Voice-based Technical Evaluator",
+    subtitle: "AI-powered Oral Assessment System",
+    image: "/projects/voice-evaluator.png",
+    tech: [
+      "Python",
+      "Flask",
+      "Whisper ASR",
+      "Sentence Transformers",
+      "Pandas",
+    ],
+    description:
+      "Designed an AI-powered oral assessment tool that evaluates spoken technical answers against reference answers and provides semantic scoring and feedback.",
     github: "#",
     demo: "#",
   },
 ];
 
 export default projects;
+

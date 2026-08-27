@@ -56,3 +56,60 @@ body {
 .handwriting{
     transform:rotate(-2deg);
 }
+
+
+/* ================================
+   Developer Profile Links
+================================ */
+
+.profile-link {
+  position: relative;
+  color: #555;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.25s ease;
+}
+
+.profile-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background: #6f8253;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.profile-link:hover {
+  color: #6f8253;
+}
+
+.profile-link:hover::after {
+  transform: scaleX(1);
+}
+
+
+/* ================================
+   Scrapbook Paper Texture
+================================ */
+
+.paper-shadow {
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.08),
+    0 2px 5px rgba(0, 0, 0, 0.04);
+}
+
+
+/* ================================
+   Responsive Hero Name
+================================ */
+
+@media (max-width: 640px) {
+  .profile-link {
+    font-size: 0.875rem;
+  }
+}
+

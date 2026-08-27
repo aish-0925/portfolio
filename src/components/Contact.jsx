@@ -2,7 +2,6 @@ import {
   FaGithub,
   FaLinkedin,
   FaEnvelope,
-  FaPhone,
 } from "react-icons/fa";
 
 import { motion } from "framer-motion";
@@ -11,141 +10,197 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="max-w-6xl mx-auto px-6 py-24"
+      className="max-w-6xl mx-auto px-6 lg:px-10 py-24"
     >
-      <h2
-        className="
-        text-5xl
-        font-bold
-        text-center
-        mb-16
-        "
-      >
-        Let's Connect
-      </h2>
+
+      {/* Heading */}
+      <div className="text-center mb-14">
+        <p className="caveat text-3xl text-[#6f8253]">
+          let's talk
+        </p>
+
+        <h2 className="playfair text-5xl md:text-6xl font-bold mt-2">
+          Let's Connect
+        </h2>
+      </div>
+
 
       <motion.div
         initial={{
           opacity: 0,
-          y: 50,
+          y: 40,
         }}
         whileInView={{
           opacity: 1,
           y: 0,
         }}
         transition={{
-          duration: 0.8,
+          duration: 0.7,
         }}
         viewport={{ once: true }}
         className="
-        bg-[#fff8ef]
-        rounded-3xl
-        shadow-xl
-        p-10
-        relative
+          bg-[#fffdf8]
+          border
+          border-[#e7dfd2]
+          rounded-xl
+          paper-shadow
+          p-8
+          md:p-10
+          relative
         "
       >
-        {/* Tape */}
+
+        {/* Scrapbook Tape */}
         <div
           className="
-          absolute
-          top-4
-          left-1/2
-          w-24
-          h-6
-          bg-pink-200
-          opacity-70
-          rotate-[-10deg]
+            absolute
+            -top-3
+            left-1/2
+            -translate-x-1/2
+            w-24
+            h-7
+            bg-[#d9c2f1]
+            opacity-80
+            rotate-[-3deg]
           "
-        ></div>
+        />
+
 
         <div className="grid md:grid-cols-2 gap-10">
 
-          {/* Left */}
+          {/* ================= LEFT ================= */}
 
           <div>
-            <h3 className="text-3xl font-bold mb-6">
+
+            <p className="caveat text-3xl text-[#6f8253]">
+              find me online
+            </p>
+
+            <h3 className="playfair text-3xl font-bold mt-2 mb-7">
               Contact Information
             </h3>
 
+
             <div className="space-y-5">
 
-              <div className="flex items-center gap-4">
-                <FaEnvelope size={22} />
-                <span>
-                  yourmail@gmail.com
-                </span>
-              </div>
+              {/* Email */}
+              <a
+                href="mailto:aishwaryaapoojary51@gmail.com"
+                className="
+                  flex
+                  items-center
+                  gap-4
+                  text-[#444]
+                  hover:text-[#6f8253]
+                  transition
+                "
+              >
+                <FaEnvelope size={20} />
 
-              <div className="flex items-center gap-4">
-                <FaPhone size={22} />
                 <span>
-                  +91 8861427340
+                  aishwaryaapoojary51@gmail.com
                 </span>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-4">
-                <FaLinkedin size={22} />
-                <span>
-                  LinkedIn Profile
-                </span>
-              </div>
 
-              <div className="flex items-center gap-4">
-                <FaGithub size={22} />
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/aishwarya-a-poojary/"
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  flex
+                  items-center
+                  gap-4
+                  text-[#444]
+                  hover:text-[#6f8253]
+                  transition
+                "
+              >
+                <FaLinkedin size={20} />
+
                 <span>
-                  GitHub Profile
+                  LinkedIn
                 </span>
-              </div>
+              </a>
+
+
+              {/* GitHub */}
+              <a
+                href="https://github.com/aish-0925"
+                target="_blank"
+                rel="noreferrer"
+                className="
+                  flex
+                  items-center
+                  gap-4
+                  text-[#444]
+                  hover:text-[#6f8253]
+                  transition
+                "
+              >
+                <FaGithub size={20} />
+
+                <span>
+                  GitHub
+                </span>
+              </a>
 
             </div>
+
           </div>
 
-          {/* Right */}
+
+          {/* ================= RIGHT ================= */}
 
           <div className="flex flex-col justify-center">
 
+            <h3 className="playfair text-3xl font-bold">
+              Let's work together
+            </h3>
+
             <p
               className="
-              text-lg
-              leading-8
+                text-[#555]
+                text-lg
+                leading-8
+                mt-4
+                max-w-md
               "
             >
-              I'm currently looking for
-              Software Developer and
-              Data Engineer opportunities.
+              I'm currently looking for Software Developer
+              and Data Engineer opportunities. Feel free to
+              reach out if you'd like to connect or discuss
+              an opportunity.
             </p>
 
-            <button
+
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noreferrer"
               className="
-              mt-8
-              bg-green-700
-              text-white
-              px-6
-              py-3
-              rounded-xl
-              w-fit
+                mt-7
+                bg-[#6f8253]
+                text-white
+                px-6
+                py-3
+                rounded-lg
+                w-fit
+                hover:bg-[#5c7043]
+                transition
               "
             >
-              Download Resume
-            </button>
+              Download Resume →
+            </a>
 
           </div>
 
         </div>
 
-        <div
-          className="
-          absolute
-          top-5
-          right-6
-          text-3xl
-          "
-        >
-          💌
-        </div>
-
       </motion.div>
+
     </section>
   );
 }
+

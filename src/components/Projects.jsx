@@ -1,11 +1,5 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-
 import { motion } from "framer-motion";
-
-import {
-  FaGithub
-} from "react-icons/fa";
+import { FaGithub, FaArrowUpRightFromSquare } from "react-icons/fa6";
 
 import projects from "../data/projects";
 
@@ -13,158 +7,178 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="max-w-7xl mx-auto px-6 py-24"
+      className="max-w-7xl mx-auto px-6 lg:px-10 py-24"
     >
-      <h2
-        className="
-        text-5xl
-        font-bold
-        text-center
-        mb-16
-        "
-      >
-        Featured Projects
-      </h2>
+      {/* Heading */}
+      <div className="text-center mb-14">
+        <p className="caveat text-3xl text-[#6f8253]">
+          things I've built
+        </p>
 
-      <Swiper
-        spaceBetween={40}
-        slidesPerView={1}
-      >
+        <h2 className="playfair text-5xl md:text-6xl font-bold mt-2">
+          Featured Projects
+        </h2>
+      </div>
+
+      {/* Projects */}
+      <div className="grid lg:grid-cols-3 gap-8 items-start">
         {projects.map((project, index) => (
-          <SwiperSlide key={index}>
-            <motion.div
-              whileHover={{
-                scale: 1.02,
-              }}
+          <motion.article
+            key={project.title}
+            initial={{
+              opacity: 0,
+              y: 40,
+              rotate: index % 2 === 0 ? -1 : 1,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            whileHover={{
+              y: -8,
+              rotate: 0,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 0.5,
+              delay: index * 0.1,
+            }}
+            className="
+              bg-white
+              border
+              border-[#e9e1d6]
+              rounded-lg
+              p-4
+              paper-shadow
+              relative
+            "
+          >
+            {/* Paper tape */}
+            <div
               className="
-              bg-[#fff8ef]
-              rounded-3xl
-              shadow-xl
-              p-8
+                absolute
+                -top-3
+                left-1/2
+                -translate-x-1/2
+                w-24
+                h-7
+                bg-[#d9c2f1]/70
+                rotate-[-2deg]
+                z-10
               "
-            >
-              <div className="grid md:grid-cols-2 gap-8">
+            />
 
-                {/* Image */}
+            {/* Image */}
+            <div className="overflow-hidden rounded-md bg-[#f4efe7]">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="
+                  w-full
+                  h-48
+                  object-cover
+                  transition
+                  duration-500
+                  hover:scale-105
+                "
+              />
+            </div>
 
-                <div className="relative">
+            {/* Content */}
+            <div className="pt-6 px-2 pb-3">
 
-                  <img
-                    src={project.image}
-                    alt={project.title}
+              <p className="caveat text-2xl text-[#6f8253]">
+                Project {String(index + 1).padStart(2, "0")}
+              </p>
+
+              <h3 className="playfair text-2xl font-bold mt-1">
+                {project.title}
+              </h3>
+
+              <p className="text-sm text-[#777] mt-1">
+                {project.subtitle}
+              </p>
+
+              {/* Technologies */}
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.tech.map((item) => (
+                  <span
+                    key={item}
                     className="
-                    rounded-xl
-                    shadow-lg
-                    "
-                  />
-
-                  <div
-                    className="
-                    absolute
-                    -top-3
-                    right-8
-                    text-4xl
-                    "
-                  >
-                    📎
-                  </div>
-
-                </div>
-
-                {/* Content */}
-
-                <div>
-
-                  <h3
-                    className="
-                    text-4xl
-                    font-bold
-                    "
-                  >
-                    {project.title}
-                  </h3>
-
-                  <p
-                    className="
-                    text-lg
-                    text-gray-500
-                    mt-2
+                      text-xs
+                      px-3
+                      py-1
+                      rounded-full
+                      bg-[#f1eee7]
+                      text-[#555]
                     "
                   >
-                    {project.subtitle}
-                  </p>
+                    {item}
+                  </span>
+                ))}
+              </div>
 
-                  <div className="flex gap-3 mt-5 flex-wrap">
+              {/* Description */}
+              <p className="text-sm leading-7 text-[#555] mt-5">
+                {project.description}
+              </p>
 
-                    {project.tech.map(
-                      (item, i) => (
-                        <span
-                          key={i}
-                          className="
-                          bg-orange-100
-                          px-4
-                          py-1
-                          rounded-full
-                          "
-                        >
-                          {item}
-                        </span>
-                      )
-                    )}
+              {/* Links */}
+              <div className="flex gap-3 mt-6">
 
-                  </div>
-
-                  <p
+                {project.demo && project.demo !== "#" && (
+                  <a
+                    href={project.demo}
+                    target="_blank"
+                    rel="noreferrer"
                     className="
-                    mt-6
-                    leading-8
-                    "
-                  >
-                    {project.description}
-                  </p>
-
-                  <div
-                    className="
-                    flex
-                    gap-4
-                    mt-8
-                    "
-                  >
-
-                    <a
-                      href={project.demo}
-                      className="
-                      bg-green-700
+                      inline-flex
+                      items-center
+                      gap-2
+                      bg-[#6f8253]
                       text-white
-                      px-5
-                      py-3
-                      rounded-xl
-                      "
-                    >
-                      View Project
-                    </a>
+                      px-4
+                      py-2
+                      rounded-lg
+                      text-sm
+                      hover:bg-[#5c7043]
+                      transition
+                    "
+                  >
+                    View Project
+                    <FaArrowUpRightFromSquare size={12} />
+                  </a>
+                )}
 
-                    <a
-                      href={project.github}
-                      className="
+                {project.github && project.github !== "#" && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`${project.title} GitHub`}
+                    className="
+                      inline-flex
+                      items-center
+                      justify-center
+                      w-10
+                      h-10
                       border
-                      px-5
-                      py-3
-                      rounded-xl
-                      "
-                    >
-                      <FaGithub />
-                    </a>
-
-                  </div>
-
-                </div>
+                      border-[#d8d1c6]
+                      rounded-lg
+                      hover:bg-[#f1eee7]
+                      transition
+                    "
+                  >
+                    <FaGithub />
+                  </a>
+                )}
 
               </div>
-            </motion.div>
-          </SwiperSlide>
+            </div>
+          </motion.article>
         ))}
-      </Swiper>
+      </div>
     </section>
   );
 }
+

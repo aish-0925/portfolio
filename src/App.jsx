@@ -3,8 +3,9 @@ import Hero from "./components/Hero";
 import About from "./components/About";
 import Skills from "./components/Skills";
 import Projects from "./components/Projects";
-import Journey from "./components/Journey";
 import Experience from "./components/Experience";
+import Publication from "./components/Publication";
+import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -16,8 +17,9 @@ function App() {
       <About />
       <Skills />
       <Projects />
-      <Journey />
       <Experience />
+      <Publication />
+      <Certifications />
       <Contact />
       <Footer />
     </>
@@ -25,3 +27,4 @@ function App() {
 }
 
 export default App;
+
