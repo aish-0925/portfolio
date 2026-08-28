@@ -8,6 +8,7 @@ import Publication from "./components/Publication";
 import Certifications from "./components/Certifications";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import Education from "./components/Education";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Navbar />
       <Hero />
       <About />
+      <Education />
       <Skills />
       <Projects />
       <Experience />

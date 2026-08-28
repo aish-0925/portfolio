@@ -1,4 +1,12 @@
 import { motion } from "framer-motion";
+import {
+  FaGithub,
+  FaLinkedin,
+} from "react-icons/fa";
+import {
+  SiLeetcode
+} from "react-icons/si";
+
 import PolaroidCard from "./scrapbook/PolaroidCard";
 import StickyNote from "./scrapbook/StickyNote";
 
@@ -62,7 +70,6 @@ export default function Hero() {
             {/* Role */}
             <div className="mt-7 flex flex-wrap items-center gap-3">
 
-              {/* MCA Graduate */}
               <span
                 className="
                   relative
@@ -86,7 +93,7 @@ export default function Hero() {
                   "
                 />
 
-               Aspiring Software Developer
+                Aspiring Software Developer
               </span>
 
             </div>
@@ -102,9 +109,10 @@ export default function Hero() {
                 md:text-lg
               "
             >
-              Passionate about data, databases, and analytics. I enjoy
-              building data-driven solutions and user-focused applications
-              while continuously learning new technologies.
+              MCA graduate with a strong foundation in software development,
+              SQL, and modern web technologies. I enjoy building practical,
+              data-driven applications and user-focused solutions while
+              continuously learning and improving my technical skills.
             </p>
 
             {/* Buttons */}
@@ -148,7 +156,10 @@ export default function Hero() {
 
             </div>
 
-            {/* Developer Profiles */}
+            {/* =====================================================
+                DEVELOPER PROFILES
+            ====================================================== */}
+
             <div
               className="
                 mt-8
@@ -156,118 +167,139 @@ export default function Hero() {
                 flex-wrap
                 items-center
                 gap-x-6
-                gap-y-3
+                gap-y-4
               "
             >
 
+              {/* GitHub */}
               <a
                 href="https://github.com/aish-0925"
                 target="_blank"
                 rel="noreferrer"
-                className="profile-link"
+                className="
+                  profile-link
+                  inline-flex
+                  items-center
+                  gap-2
+                  text-[#303332]
+                  hover:text-[#6f8253]
+                  transition
+                "
+                aria-label="GitHub Profile"
               >
-                GitHub
+                <FaGithub className="text-[21px]" />
+                <span>GitHub</span>
               </a>
 
+              {/* LinkedIn */}
               <a
                 href="https://www.linkedin.com/in/aishwarya-a-poojary/"
                 target="_blank"
                 rel="noreferrer"
-                className="profile-link"
+                className="
+                  profile-link
+                  inline-flex
+                  items-center
+                  gap-2
+                  text-[#303332]
+                  hover:text-[#6f8253]
+                  transition
+                "
+                aria-label="LinkedIn Profile"
               >
-                LinkedIn
+                <FaLinkedin className="text-[21px]" />
+                <span>LinkedIn</span>
               </a>
 
-              {/* Replace with your actual LeetCode URL */}
+              {/* LeetCode */}
               <a
-                href="#"
-                className="profile-link"
+                href="https://leetcode.com/u/aishwarya_a_poojary25/"
+                className="
+                  profile-link
+                  inline-flex
+                  items-center
+                  gap-2
+                  text-[#303332]
+                  hover:text-[#6f8253]
+                  transition
+                "
+                aria-label="LeetCode Profile"
               >
-                LeetCode
+                <SiLeetcode className="text-[20px]" />
+                <span>LeetCode</span>
               </a>
 
-              {/* Replace with your actual HackerRank URL */}
-              <a
-                href="#"
-                className="profile-link"
-              >
-                HackerRank
-              </a>
-
+          
             </div>
 
           </motion.div>
 
 
+          {/* =====================================================
+              RIGHT — SCRAPBOOK PHOTO
+          ====================================================== */}
 
-{/* =====================================================
-    RIGHT — SMALL SCRAPBOOK PHOTO
-====================================================== */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            className="
+              relative
+              flex
+              justify-center
+              lg:justify-end
+              min-h-[430px]
+              lg:min-h-[460px]
+            "
+          >
 
-<motion.div
-  initial={{ opacity: 0, x: 30 }}
-  animate={{ opacity: 1, x: 0 }}
-  transition={{ duration: 0.8 }}
-  className="
-    relative
-    flex
-    justify-center
-    lg:justify-end
-    min-h-[380px]
-  "
->
+            {/* CSS scrapbook tape */}
+            <div
+              className="
+                absolute
+                top-6
+                right-[24%]
+                w-24
+                h-7
+                bg-[#cbb8e5]
+                opacity-90
+                rotate-[3deg]
+                z-30
+                shadow-sm
+              "
+            />
 
-  {/* CSS scrapbook tape */}
-  <div
-    className="
-      absolute
-      top-4
-      right-[24%]
-      w-24
-      h-7
-      bg-[#cbb8e5]
-      opacity-90
-      rotate-[3deg]
-      z-30
-      shadow-sm
-    "
-  />
+            {/* Polaroid */}
+            <div
+              className="
+                relative
+                z-10
+                w-[220px]
+                sm:w-[235px]
+                md:w-[245px]
+                lg:w-[250px]
+                rotate-[3deg]
+                mt-8
+              "
+            >
+              <PolaroidCard />
+            </div>
 
-  {/* Small Polaroid */}
-  <div
-    className="
-      relative
-      z-10
-      w-[220px]
-      sm:w-[235px]
-      md:w-[245px]
-      lg:w-[250px]
-      rotate-[3deg]
-      mt-8
-    "
-  >
-    <PolaroidCard />
-  </div>
+            {/* Sticky Note */}
+            <div
+              className="
+                absolute
+                z-20
+                right-[-5px]
+                md:right-[-10px]
+                lg:right-[-15px]
+                bottom-[5px]
+              "
+            >
+              <StickyNote />
+            </div>
 
-  {/* Small Sticky Note */}
-  <div
-    className="
-      absolute
-      z-20
-      right-[-5px]
-      md:right-[-10px]
-      lg:right-[-15px]
-      bottom-[-5px]
-      scale-[0.65]
-      origin-bottom-right
-    "
-  >
-    <StickyNote />
-  </div>
-
-</motion.div>
-
-
+          </motion.div>
 
         </div>
 
@@ -275,4 +307,3 @@ export default function Hero() {
     </section>
   );
 }
-

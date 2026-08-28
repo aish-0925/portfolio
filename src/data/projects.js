@@ -2,42 +2,72 @@ const projects = [
   {
     title: "AgriTrust",
     subtitle: "Farm-to-Restaurant Supply Intelligence Platform",
-    image: "/projects/agritrust.png",
-    tech: ["MongoDB", "React", "Express.js", "Tailwind CSS", "Python"],
+
+    images: [
+      "/projects/agritrust-1.png",
+      "/projects/agritrust-2.png",
+      "/projects/agritrust-3.png",
+    ],
+
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+      "Express",
+      "Machine Learning",
+    ],
+
     description:
-      "Developed a platform connecting farmers and restaurants for product listing and order management, with crop recommendation and chatbot features.",
-    github: "#",
+      "A farm-to-restaurant platform connecting farmers and restaurants with product management, ordering, crop advisory, and intelligent agricultural insights.",
+
+    github: "https://github.com/aish-0925/agritrust",
     demo: "#",
   },
 
   {
     title: "VeriTest",
-    subtitle: "AI-Driven Test Automation & Compliance Platform",
-    image: "/projects/veritest.png",
-    tech: ["Python", "Selenium", "React", "NLP", "MySQL"],
+    subtitle: "Automated Testing Platform",
+
+    images: [
+      "/projects/veritest-1.png",
+      "/projects/veritest-2.png"
+    ],
+
+    tech: [
+      "React",
+      "Node.js",
+      "MongoDB",
+    ],
+
     description:
-      "Developed an AI-based platform that converts software requirements into automated Selenium tests and provides a dashboard for test coverage and compliance metrics.",
-    github: "#",
+      "A web-based testing platform designed to simplify test creation, execution, and result management.",
+
+    github: "https://github.com/aish-0925/VeriTest",
     demo: "#",
   },
 
   {
     title: "Voice-based Technical Evaluator",
-    subtitle: "AI-powered Oral Assessment System",
-    image: "/projects/voice-evaluator.png",
+    subtitle: "ASR & NLP Based Evaluation",
+
+    images: [
+      "/projects/voice-evaluator-2.png",
+    ],
+
     tech: [
       "Python",
-      "Flask",
-      "Whisper ASR",
-      "Sentence Transformers",
-      "Pandas",
+      "Whisper",
+      "SBERT",
+      "NLP",
+      "Machine Learning",
     ],
+
     description:
-      "Designed an AI-powered oral assessment tool that evaluates spoken technical answers against reference answers and provides semantic scoring and feedback.",
-    github: "#",
+      "An automated system that evaluates spoken technical answers using speech recognition, semantic similarity, and NLP-based scoring.",
+
+    github: "https://github.com/aish-0925/oral_evaluator",
     demo: "#",
   },
 ];
 
 export default projects;
-

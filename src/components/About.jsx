@@ -2,104 +2,114 @@ import { motion } from "framer-motion";
 
 export default function About() {
   return (
-    <section
-      id="about"
-      className="max-w-7xl mx-auto px-6 lg:px-10 py-24"
-    >
-      <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
+    <section id="about" className="py-20 lg:py-28">
+      <div className="max-w-7xl mx-auto px-6 lg:px-10">
 
-        {/* Photo */}
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7 }}
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="relative max-w-md mx-auto"
-        >
-          <div
-            className="
-              bg-[#dfe7d3]
-              p-4
-              rounded-lg
-              shadow-lg
-              rotate-2
-            "
-          >
-            <img
-              src="/about.jpg"
-              alt="Aishwarya A Poojary"
-              className="w-full rounded-md"
-            />
-          </div>
-
-          {/* Small paper note */}
-          <div
-            className="
-              absolute
-              -bottom-6
-              -right-5
-              bg-[#f7c9d8]
-              px-5
-              py-3
-              rotate-[-4deg]
-              shadow-md
-              text-sm
-            "
-          >
-            Always curious.
-            <br />
-            Always learning.
-          </div>
-        </motion.div>
-
-        {/* Text */}
-        <motion.div
-          initial={{ opacity: 0, x: 40 }}
-          whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          viewport={{ once: true }}
           className="
-            bg-white
-            border
-            border-[#e7dfd2]
-            rounded-xl
-            p-8
-            md:p-10
-            paper-shadow
-            relative
+            grid
+            lg:grid-cols-[0.8fr_1.2fr]
+            gap-10
+            lg:gap-16
+            items-center
           "
         >
-          <p className="caveat text-3xl text-[#6f8253]">
-            a little about me
-          </p>
 
-          <h2 className="playfair text-5xl font-bold mt-2 mb-6">
-            About Me
-          </h2>
+          {/* LEFT SIDE */}
+          <div className="relative">
 
-          <p className="text-[#555] leading-8">
-            I recently completed my Master of Computer Applications (MCA)
-            and have a strong interest in software development, databases,
-            and data-driven solutions.
-          </p>
+  <p className="caveat text-2xl md:text-3xl text-[#71865a] mb-2">
+    a little about me
+  </p>
 
-          <p className="text-[#555] leading-8 mt-5">
-            I enjoy learning new technologies and building practical
-            applications that solve real-world problems. I am particularly
-            interested in growing my skills in data engineering, databases,
-            and modern software technologies.
-          </p>
+  <h2
+    className="
+      playfair
+      text-4xl
+      md:text-5xl
+      font-bold
+      text-[#202020]
+      leading-tight
+    "
+  >
+    About Me
+  </h2>
 
-          <div className="mt-7 flex flex-wrap gap-2">
-            <span className="small-tag">Data</span>
-            <span className="small-tag">Databases</span>
-            <span className="small-tag">Software Development</span>
-            <span className="small-tag">Problem Solving</span>
-          </div>
+  <div className="mt-5 w-16 h-1 bg-[#71865a] rounded-full" />
+
+  <p
+    className="
+      mt-5
+      max-w-sm
+      text-[#5b5b5b]
+      text-base
+      leading-7
+    "
+  >
+    I enjoy turning ideas into simple, practical solutions and learning
+    along the way.
+  </p>
+
+</div>
+
+
+          {/* RIGHT SIDE */}
+        <div
+  className="
+    bg-[#fffefa]
+    border
+    border-[#e5dfd4]
+    rounded-2xl
+    px-6
+    py-6
+    md:px-8
+    md:py-8
+    shadow-[0_10px_30px_rgba(70,65,50,0.08)]
+  "
+>
+  <p className="text-[#555] text-base leading-7">
+    I’m an MCA graduate with a strong foundation in software development,
+    SQL, databases, and modern web technologies.
+  </p>
+
+  <p className="mt-4 text-[#555] text-base leading-7">
+    I enjoy building practical applications, solving problems with code,
+    and learning new technologies. I’m particularly interested in software
+    development, backend systems, and data engineering.
+  </p>
+
+  <div
+    className="
+      mt-6
+      pt-5
+      border-t
+      border-[#e8e2d8]
+      flex
+      flex-wrap
+      gap-2
+    "
+  >
+    <span className="about-tag">
+      Software Development
+    </span>
+
+    <span className="about-tag">
+      SQL & Databases
+    </span>
+
+    <span className="about-tag">
+      Data Engineering
+    </span>
+  </div>
+</div>
+
         </motion.div>
 
       </div>
     </section>
   );
 }
-

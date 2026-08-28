@@ -113,3 +113,14 @@ body {
   }
 }
 
+.about-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 7px 14px;
+  border-radius: 999px;
+  background: #eef1e7;
+  border: 1px solid #d7dfca;
+  color: #596d46;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
