@@ -54,20 +54,19 @@ export default function Publication() {
           </p>
 
           <h3 className="playfair text-3xl md:text-4xl font-bold mt-3">
-            Your Publication Title
+            A Comparative Analysis of Automatic Speech Recognition and Semantic Similarity Models for Oral Evaluation
           </h3>
 
           <p className="text-[#777] mt-3">
-            Conference / Journal Name · Year
+            2026 Eight International Conference on Computational Intelligence and Communication Technologies (CCICT) / IEEE EXplore · June 2026
           </p>
 
           <p className="text-[#555] leading-8 mt-6">
-            Add a short 2–3 line description of your research,
-            the problem you addressed, and your contribution.
+            Published an IEEE research paper on developing an AI-driven approach for automated technical oral assessment using Automatic Speech Recognition (ASR) and semantic similarity models. The study compares traditional and transformer-based methods for evaluating spoken answers and analyzes the effects of transcription errors and accent variations, demonstrating the effectiveness of embedding-based models in aligning with human evaluation.
           </p>
 
           <a
-            href="#"
+            href="https://ieeexplore.ieee.org/document/11575898"
             target="_blank"
             rel="noreferrer"
             className="
