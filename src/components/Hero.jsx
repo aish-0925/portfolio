@@ -9,22 +9,21 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="flex min-h-[calc(100vh-80px)] items-center overflow-hidden py-12 sm:py-14 lg:py-16"
+      className="flex min-h-[calc(100vh-80px)] items-center overflow-hidden py-10 sm:py-12 lg:py-14"
     >
       <div className="mx-auto w-full max-w-7xl px-6 lg:px-10">
-        <div className="grid items-center gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
-          {/* Introduction */}
+        <div className="grid items-center gap-8 lg:grid-cols-[minmax(0,1.4fr)_minmax(340px,0.6fr)] lg:gap-8">
           <motion.div
             initial={{ opacity: 0, x: -32 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
-            className="relative z-10"
+            className="relative z-10 min-w-0"
           >
             <p className="caveat text-3xl text-[#24303d] sm:text-4xl md:text-5xl">
               Hi, I'm
             </p>
 
-            <h1 className="playfair mt-3 max-w-full text-[clamp(2.35rem,5.2vw,5rem)] font-bold leading-[1.08] tracking-[-0.035em] text-[#202020]">
+            <h1 className="playfair mt-3 text-[clamp(2.2rem,4.3vw,4.65rem)] font-bold leading-[1.06] tracking-[-0.045em] text-[#202020] lg:whitespace-nowrap">
               Aishwarya A Poojary
             </h1>
 
@@ -63,7 +62,6 @@ export default function Hero() {
               </a>
             </div>
 
-            {/* Developer profiles */}
             <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-3 sm:mt-8">
               <a
                 href="https://github.com/aish-0925"
@@ -100,20 +98,19 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          {/* Scrapbook profile photo */}
           <motion.div
             initial={{ opacity: 0, x: 28 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative flex min-h-[350px] items-center justify-center sm:min-h-[390px] lg:min-h-[420px] lg:justify-end"
+            className="relative mx-auto flex min-h-[370px] w-full max-w-[390px] items-center justify-center lg:min-h-[440px] lg:justify-end"
           >
-            <div className="absolute right-[24%] top-5 z-30 h-6 w-20 rotate-[3deg] bg-[#cbb8e5]/80 shadow-sm sm:w-24" />
+            <div className="absolute right-[25%] top-5 z-30 h-6 w-20 rotate-[3deg] bg-[#cbb8e5]/80 shadow-sm sm:w-24" />
 
-            <div className="relative z-10 mt-2 w-[205px] rotate-[2deg] sm:w-[220px] md:w-[230px] lg:mr-5 lg:w-[235px]">
+            <div className="relative z-10 mt-1 w-[250px] rotate-[2deg] sm:w-[270px] lg:mr-5 lg:w-[280px]">
               <PolaroidCard />
             </div>
 
-            <div className="absolute bottom-1 right-0 z-20 sm:right-1 lg:right-0">
+            <div className="absolute bottom-0 right-0 z-20 sm:right-1 lg:right-[-2px]">
               <StickyNote />
             </div>
           </motion.div>
