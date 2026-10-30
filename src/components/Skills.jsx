@@ -20,55 +20,55 @@ const skillGroups = [
   {
     title: "Languages",
     skills: [
-      { name: "Python", icon: FaPython },
-      { name: "Java", icon: FaJava },
-      { name: "JavaScript", icon: SiJavascript },
+      { name: "Python", icon: FaPython, color: "#3776AB" },
+      { name: "Java", icon: FaJava, color: "#E76F00" },
+      { name: "JavaScript", icon: SiJavascript, color: "#D6B800" },
       { name: "SQL", icon: FaCode },
-      { name: "C", icon: SiC },
+      { name: "C", icon: SiC, color: "#A8B9CC" },
     ],
   },
   {
     title: "Frontend",
     skills: [
-      { name: "HTML5", icon: FaCode },
-      { name: "CSS3", icon: FaCode },
-      { name: "React.js", icon: FaReact },
-      { name: "Tailwind CSS", icon: FaCode },
+      { name: "HTML5", icon: FaCode, color: "#E34F26" },
+      { name: "CSS3", icon: FaCode, color: "#1572B6" },
+      { name: "React.js", icon: FaReact, color: "#149ECA" },
+      { name: "Tailwind CSS", icon: FaCode, color: "#06B6D4" },
     ],
   },
   {
     title: "Backend & APIs",
     skills: [
-      { name: "Node.js", icon: FaNodeJs },
-      { name: "Express.js", icon: FaCode },
-      { name: "ASP.NET", icon: SiDotnet },
-      { name: "ADO.NET", icon: FaCode },
+      { name: "Node.js", icon: FaNodeJs, color: "#339933" },
+      { name: "Express.js", icon: FaCode, color: "#444444" },
+      { name: "ASP.NET", icon: SiDotnet, color: "#512BD4" },
+      { name: "ADO.NET", icon: FaCode, color: "#512BD4" },
       { name: "REST APIs", icon: FaCode },
     ],
   },
   {
     title: "Databases",
     skills: [
-      { name: "MySQL", icon: SiMysql },
-      { name: "MongoDB", icon: SiMongodb },
-      { name: "SQL Server", icon: FaCode },
+      { name: "MySQL", icon: SiMysql, color: "#4479A1" },
+      { name: "MongoDB", icon: SiMongodb, color: "#47A248" },
+      { name: "SQL Server", icon: FaCode, color: "#CC2927" },
     ],
   },
   {
     title: "Tools",
     skills: [
-      { name: "Git", icon: FaGitAlt },
-      { name: "GitHub", icon: FaGithub },
-      { name: "VS Code", icon: FaCode },
-      { name: "Postman", icon: FaCode },
+      { name: "Git", icon: FaGitAlt, color: "#F05032" },
+      { name: "GitHub", icon: FaGithub, color: "#181717" },
+      { name: "VS Code", icon: FaCode, color: "#007ACC" },
+      { name: "Postman", icon: FaCode, color: "#FF6C37" },
     ],
   },
   {
     title: "Cloud & DevOps",
     skills: [
-      { name: "AWS", icon: FaCode },
-      { name: "Docker", icon: FaCode },
-      { name: "GitHub Actions", icon: FaGithub },
+      { name: "AWS", icon: FaCode, color: "#FF9900" },
+      { name: "Docker", icon: FaCode, color: "#2496ED" },
+      { name: "GitHub Actions", icon: FaGithub, color: "#2088FF" },
     ],
   },
 ];
@@ -109,7 +109,11 @@ export default function Skills() {
                     key={skill.name}
                     className="inline-flex items-center gap-1.5 rounded-md border border-[#e9e6de] bg-[#fbfaf7] px-2.5 py-1.5 text-[13px] font-medium text-[#44433e]"
                   >
-                    <Icon className="shrink-0 text-[13px] text-[#71835d]" aria-hidden="true" />
+                    <Icon
+                      className="shrink-0 text-[13px]"
+                      style={{ color: skill.color || "#71835d" }}
+                      aria-hidden="true"
+                    />
                     {skill.name}
                   </span>
                 );
