@@ -9,448 +9,175 @@ import {
 
 import projects from "../data/projects";
 
-
-/* ============================================================
-   PROJECT CARD
-============================================================ */
-
 function ProjectCard({ project, index }) {
   const [currentImage, setCurrentImage] = useState(0);
+  const images = project.images?.length
+    ? project.images
+    : project.image
+      ? [project.image]
+      : [];
 
-  // Supports both the new `images` array and old `image` property
-  const images =
-    project.images && project.images.length > 0
-      ? project.images
-      : [project.image];
-
-  const nextImage = () => {
-    setCurrentImage((prev) => (prev + 1) % images.length);
-  };
-
-  const previousImage = () => {
-    setCurrentImage(
-      (prev) => (prev - 1 + images.length) % images.length
+  const changeImage = (direction) => {
+    setCurrentImage((current) =>
+      (current + direction + images.length) % images.length
     );
   };
 
   return (
     <motion.article
-      initial={{
-        opacity: 0,
-        y: 40,
-        rotate: index % 2 === 0 ? -1 : 1,
-      }}
-      whileInView={{
-        opacity: 1,
-        y: 0,
-      }}
-      whileHover={{
-        y: -8,
-        rotate: 0,
-      }}
-      viewport={{ once: true }}
-      transition={{
-        duration: 0.5,
-        delay: index * 0.08,
-      }}
-      className="
-        bg-white
-        border
-        border-[#e9e1d6]
-        rounded-lg
-        p-4
-        paper-shadow
-        relative
-        shrink-0
-        w-[310px]
-        sm:w-[340px]
-        lg:w-[360px]
-        snap-center
-      "
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.45, delay: index * 0.08 }}
+      whileHover={{ y: -5 }}
+      className="relative flex h-full flex-col overflow-hidden rounded-xl border border-[#e9e1d6] bg-white p-4 shadow-[0_5px_18px_rgba(45,38,25,0.06)] transition-shadow hover:shadow-[0_10px_26px_rgba(45,38,25,0.10)] sm:p-5"
     >
+      {/* Subtle scrapbook tape detail */}
+      <div className="absolute left-1/2 top-0 z-10 h-5 w-20 -translate-x-1/2 -rotate-2 bg-[#d9c2f1]/70" />
 
-      {/* ======================================================
-          PAPER TAPE
-      ======================================================= */}
-
-      <div
-        className="
-          absolute
-          -top-3
-          left-1/2
-          -translate-x-1/2
-          w-24
-          h-7
-          bg-[#d9c2f1]/70
-          rotate-[-2deg]
-          z-20
-        "
-      />
-
-
-      {/* ======================================================
-          IMAGE CAROUSEL
-      ======================================================= */}
-
-      <div className="relative overflow-hidden rounded-md bg-[#f4efe7]">
-
-        <img
-          src={images[currentImage]}
-          alt={`${project.title} screenshot ${currentImage + 1}`}
-          className="
-            w-full
-            h-52
-            object-cover
-            transition
-            duration-300
-          "
-        />
-
-        {/* Previous button */}
-        {images.length > 1 && (
-          <button
-            type="button"
-            onClick={previousImage}
-            aria-label="Previous project image"
-            className="
-              absolute
-              left-2
-              top-1/2
-              -translate-y-1/2
-              w-8
-              h-8
-              rounded-full
-              bg-white/90
-              text-[#444]
-              flex
-              items-center
-              justify-center
-              shadow
-              hover:bg-white
-              transition
-            "
-          >
-            <FaChevronLeft size={12} />
-          </button>
-        )}
-
-        {/* Next button */}
-        {images.length > 1 && (
-          <button
-            type="button"
-            onClick={nextImage}
-            aria-label="Next project image"
-            className="
-              absolute
-              right-2
-              top-1/2
-              -translate-y-1/2
-              w-8
-              h-8
-              rounded-full
-              bg-white/90
-              text-[#444]
-              flex
-              items-center
-              justify-center
-              shadow
-              hover:bg-white
-              transition
-            "
-          >
-            <FaChevronRight size={12} />
-          </button>
-        )}
-
-        {/* Image indicators */}
-        {images.length > 1 && (
-          <div
-            className="
-              absolute
-              bottom-3
-              left-1/2
-              -translate-x-1/2
-              flex
-              gap-1.5
-              bg-black/20
-              px-2
-              py-1
-              rounded-full
-            "
-          >
-            {images.map((_, imageIndex) => (
-              <button
-                key={imageIndex}
-                type="button"
-                onClick={() => setCurrentImage(imageIndex)}
-                aria-label={`Show image ${imageIndex + 1}`}
-                className={`
-                  w-1.5
-                  h-1.5
-                  rounded-full
-                  transition
-                  ${
-                    currentImage === imageIndex
-                      ? "bg-white scale-125"
-                      : "bg-white/60"
-                  }
-                `}
-              />
-            ))}
+      {/* Project preview */}
+      <div className="relative overflow-hidden rounded-lg border border-[#eee8df] bg-[#f4efe7]">
+        {images.length > 0 ? (
+          <img
+            src={images[currentImage]}
+            alt={`${project.title} project screenshot ${currentImage + 1}`}
+            loading="lazy"
+            className="h-48 w-full object-cover object-top sm:h-52"
+          />
+        ) : (
+          <div className="flex h-48 items-center justify-center text-sm text-[#777]">
+            Project preview
           </div>
+        )}
+
+        {images.length > 1 && (
+          <>
+            <button
+              type="button"
+              onClick={() => changeImage(-1)}
+              aria-label={`Previous ${project.title} screenshot`}
+              className="absolute left-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#444] shadow transition hover:bg-white"
+            >
+              <FaChevronLeft size={12} />
+            </button>
+            <button
+              type="button"
+              onClick={() => changeImage(1)}
+              aria-label={`Next ${project.title} screenshot`}
+              className="absolute right-2 top-1/2 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 text-[#444] shadow transition hover:bg-white"
+            >
+              <FaChevronRight size={12} />
+            </button>
+            <div className="absolute bottom-2 left-1/2 flex -translate-x-1/2 gap-1.5 rounded-full bg-black/25 px-2 py-1">
+              {images.map((image, imageIndex) => (
+                <button
+                  key={image}
+                  type="button"
+                  onClick={() => setCurrentImage(imageIndex)}
+                  aria-label={`Show screenshot ${imageIndex + 1}`}
+                  aria-pressed={currentImage === imageIndex}
+                  className={`h-1.5 w-1.5 rounded-full transition ${
+                    currentImage === imageIndex ? "scale-125 bg-white" : "bg-white/60"
+                  }`}
+                />
+              ))}
+            </div>
+          </>
         )}
       </div>
 
+      <div className="flex flex-1 flex-col px-1 pb-1 pt-5">
+        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
+          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#6f8253]">
+            {project.category || "Featured Project"}
+          </span>
+        </div>
 
-      {/* ======================================================
-          CONTENT
-      ======================================================= */}
-
-      <div className="pt-6 px-2 pb-3">
-
-
-        <h3 className="playfair text-2xl font-bold mt-1">
+        <h3 className="playfair text-2xl font-bold leading-tight text-[#242424]">
           {project.title}
         </h3>
+        <p className="mt-1 text-sm text-[#777]">{project.subtitle}</p>
 
-        <p className="text-sm text-[#777] mt-1">
-          {project.subtitle}
+        <p className="mt-4 text-sm leading-6 text-[#555]">
+          {project.description}
         </p>
 
+        {project.highlights?.length > 0 && (
+          <ul className="mt-3 space-y-2 text-sm leading-5 text-[#555]">
+            {project.highlights.map((highlight) => (
+              <li key={highlight} className="flex gap-2">
+                <span className="mt-0.5 text-[#71865a]" aria-hidden="true">•</span>
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        )}
 
-        {/* Technologies */}
-        <div className="flex flex-wrap gap-2 mt-4">
+        <div className="mt-4 flex flex-wrap gap-2">
           {project.tech.map((item) => (
             <span
               key={item}
-              className="
-                text-xs
-                px-3
-                py-1
-                rounded-full
-                bg-[#f1eee7]
-                text-[#555]
-              "
+              className="rounded-full border border-[#e8e2d8] bg-[#f6f3ed] px-2.5 py-1 text-[11px] font-medium text-[#555]"
             >
               {item}
             </span>
           ))}
         </div>
 
+        <div className="mt-auto flex flex-wrap items-center gap-3 pt-5">
+          {project.demo && project.demo !== "#" && (
+            <a
+              href={project.demo}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg bg-[#6f8253] px-3.5 py-2 text-sm font-medium text-white transition hover:bg-[#5c7043]"
+            >
+              Live Demo
+              <FaArrowUpRightFromSquare size={11} />
+            </a>
+          )}
 
-        {/* Description */}
-        <p className="text-sm leading-7 text-[#555] mt-5">
-          {project.description}
-        </p>
-
-
-       {/* Links */}
-<div className="flex items-center gap-3 mt-6">
-
-  {/* Live Project */}
-  {project.demo && project.demo !== "#" && (
-    <a
-      href={project.demo}
-      target="_blank"
-      rel="noreferrer"
-      className="
-        inline-flex
-        items-center
-        gap-2
-        bg-[#6f8253]
-        text-white
-        px-4
-        py-2
-        rounded-lg
-        text-sm
-        hover:bg-[#5c7043]
-        transition
-      "
-    >
-      View Project
-      <FaArrowUpRightFromSquare size={12} />
-    </a>
-  )}
-
-  {/* GitHub Source Code */}
-  {project.github && project.github !== "#" && (
-    <a
-      href={project.github}
-      target="_blank"
-      rel="noreferrer"
-      className="
-        inline-flex
-        items-center
-        gap-2
-        border
-        border-[#d8d1c6]
-        text-[#444]
-        px-4
-        py-2
-        rounded-lg
-        text-sm
-        hover:bg-[#f1eee7]
-        hover:text-[#6f8253]
-        transition
-      "
-    >
-      <FaGithub size={16} />
-      Source Code
-    </a>
-  )}
-
-</div>
-
+          {project.github && project.github !== "#" && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg border border-[#d8d1c6] px-3.5 py-2 text-sm font-medium text-[#444] transition hover:border-[#6f8253] hover:bg-[#f1eee7] hover:text-[#52633b]"
+            >
+              <FaGithub size={15} />
+              Source Code
+            </a>
+          )}
+        </div>
       </div>
     </motion.article>
   );
 }
 
-
-/* ============================================================
-   PROJECTS SECTION
-============================================================ */
-
 export default function Projects() {
   return (
     <section
       id="projects"
-      className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24"
+      className="mx-auto max-w-7xl px-6 py-16 sm:py-20 lg:px-10 lg:py-24"
     >
-
-      {/* Heading */}
-      <div className="text-center mb-12">
-
-        <p className="caveat text-2xl md:text-3xl text-[#6f8253]">
+      <div className="mb-9 text-center sm:mb-12">
+        <p className="caveat text-2xl text-[#6f8253] md:text-3xl">
           things I've built
         </p>
-
-        <h2
-          className="
-            playfair
-            text-4xl
-            md:text-5xl
-            font-bold
-            mt-2
-            text-[#242424]
-          "
-        >
+        <h2 className="playfair mt-2 text-4xl font-bold text-[#242424] md:text-5xl">
           Featured Projects
         </h2>
-
-
+        <p className="mx-auto mt-4 max-w-2xl text-sm leading-6 text-[#777] sm:text-base">
+          A selection of applications and experiments where I've put my
+          development and problem-solving skills into practice.
+        </p>
       </div>
 
-
-      {/* ======================================================
-          HORIZONTAL PROJECT CAROUSEL
-      ======================================================= */}
-
-      <div className="relative">
-
-  {/* Previous Projects */}
-  <button
-    type="button"
-    onClick={() => {
-      document
-        .getElementById("projects-slider")
-        ?.scrollBy({
-          left: -380,
-          behavior: "smooth",
-        });
-    }}
-    aria-label="Previous projects"
-    className="
-      hidden
-      md:flex
-      absolute
-      -left-5
-      top-1/2
-      -translate-y-1/2
-      z-20
-      w-10
-      h-10
-      rounded-full
-      bg-white
-      border
-      border-[#ddd5c9]
-      shadow-md
-      items-center
-      justify-center
-      text-[#555]
-      hover:bg-[#f1eee7]
-      hover:text-[#6f8253]
-      transition
-    "
-  >
-    <FaChevronLeft size={14} />
-  </button>
-
-
-  {/* Project Cards */}
-  <div
-    id="projects-slider"
-    className="
-      flex
-      gap-7
-      overflow-x-auto
-      pb-8
-      snap-x
-      snap-mandatory
-      scroll-smooth
-      scrollbar-hide
-    "
-  >
-    {projects.map((project, index) => (
-      <ProjectCard
-        key={project.title}
-        project={project}
-        index={index}
-      />
-    ))}
-  </div>
-
-
-  {/* Next Projects */}
-  <button
-    type="button"
-    onClick={() => {
-      document
-        .getElementById("projects-slider")
-        ?.scrollBy({
-          left: 380,
-          behavior: "smooth",
-        });
-    }}
-    aria-label="Next projects"
-    className="
-      hidden
-      md:flex
-      absolute
-      -right-5
-      top-1/2
-      -translate-y-1/2
-      z-20
-      w-10
-      h-10
-      rounded-full
-      bg-white
-      border
-      border-[#ddd5c9]
-      shadow-md
-      items-center
-      justify-center
-      text-[#555]
-      hover:bg-[#f1eee7]
-      hover:text-[#6f8253]
-      transition
-    "
-  >
-    <FaChevronRight size={14} />
-  </button>
-
-</div>
-
+      <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3">
+        {projects.map((project, index) => (
+          <ProjectCard key={project.title} project={project} index={index} />
+        ))}
+      </div>
     </section>
   );
 }
