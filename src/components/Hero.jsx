@@ -37,7 +37,7 @@ export default function Hero() {
               </span>
             </div>
 
-            <p className="mt-6 max-w-xl text-base leading-7 text-[#555] sm:text-[17px] sm:leading-8">
+            <p className="mt-6 max-w-[620px] text-left text-base leading-7 text-[#555] sm:text-[17px] sm:leading-8 md:text-justify [text-align-last:left]">
               I have hands-on experience in .NET development and a strong
               foundation in software engineering. I enjoy building full-stack
               applications, backend systems and AI-powered solutions, while
