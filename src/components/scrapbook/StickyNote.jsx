@@ -3,36 +3,18 @@ import { motion } from "framer-motion";
 export default function StickyNote() {
   return (
     <motion.div
-      animate={{
-        y: [0, -6, 0],
-        rotate: [-6, -5, -6],
-      }}
-      transition={{
-        duration: 4,
-        repeat: Infinity,
-      }}
-      className="
-      absolute
-      -bottom-10
-      -right-10
-      bg-[#F7DD79]
-      p-5
-      w-60
-      rotate-6
-      shadow-xl
-      border border-yellow-300
-      rounded-sm
-      z-20
-      "
+      animate={{ y: [0, -4, 0], rotate: [-3, -2, -3] }}
+      transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+      className="w-48 rounded-sm border border-yellow-300 bg-[#F7DD79] p-4 shadow-lg sm:w-52 sm:p-5"
     >
-      <h3 className="caveat text-3xl font-bold">
-        Currently Exploring
+      <h3 className="caveat text-2xl font-bold text-[#29251d] sm:text-3xl">
+        My Focus
       </h3>
 
-      <ul className="mt-3 space-y-2 text-sm">
-        <li>• Data Engineering</li>
-        <li>• Cloud Technologies</li>
-        <li>• System Design</li>
+      <ul className="mt-2 space-y-1.5 text-xs leading-5 text-[#393326] sm:text-sm">
+        <li>• Software Development</li>
+        <li>• Backend Engineering</li>
+        <li>• AI & Machine Learning</li>
       </ul>
     </motion.div>
   );
