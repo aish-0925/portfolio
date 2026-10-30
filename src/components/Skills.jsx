@@ -1,6 +1,4 @@
 import { motion } from "framer-motion";
-
-
 import {
   FaPython,
   FaJava,
@@ -10,7 +8,6 @@ import {
   FaGithub,
   FaCode,
 } from "react-icons/fa";
-
 import {
   SiMysql,
   SiMongodb,
@@ -21,151 +18,100 @@ import {
 
 const skillGroups = [
   {
-    title: "Programming Languages",
-    accent: "bg-[#d9c2f1]",
+    title: "Languages",
     skills: [
       { name: "Python", icon: FaPython },
       { name: "Java", icon: FaJava },
+      { name: "JavaScript", icon: SiJavascript },
       { name: "SQL", icon: FaCode },
       { name: "C", icon: SiC },
-      { name: "JavaScript", icon: SiJavascript },
+    ],
+  },
+  {
+    title: "Frontend",
+    skills: [
+      { name: "HTML5", icon: FaCode },
+      { name: "CSS3", icon: FaCode },
+      { name: "React.js", icon: FaReact },
+      { name: "Tailwind CSS", icon: FaCode },
+    ],
+  },
+  {
+    title: "Backend & APIs",
+    skills: [
+      { name: "Node.js", icon: FaNodeJs },
+      { name: "Express.js", icon: FaCode },
+      { name: "ASP.NET", icon: SiDotnet },
+      { name: "ADO.NET", icon: FaCode },
+      { name: "REST APIs", icon: FaCode },
     ],
   },
   {
     title: "Databases",
-    accent: "bg-[#dfe7d3]",
     skills: [
       { name: "MySQL", icon: SiMysql },
       { name: "MongoDB", icon: SiMongodb },
+      { name: "SQL Server", icon: FaCode },
     ],
   },
   {
-    title: "Frameworks & Technologies",
-    accent: "bg-[#f7c9d8]",
-    skills: [
-      { name: ".NET", icon: SiDotnet },
-      { name: "React.js", icon: FaReact },
-      { name: "Node.js", icon: FaNodeJs },
-    ],
-  },
-  {
-    title: "Tools & Platforms",
-    accent: "bg-[#f8e08a]",
+    title: "Tools",
     skills: [
       { name: "Git", icon: FaGitAlt },
       { name: "GitHub", icon: FaGithub },
+      { name: "VS Code", icon: FaCode },
+      { name: "Postman", icon: FaCode },
+    ],
+  },
+  {
+    title: "Cloud & DevOps",
+    skills: [
+      { name: "AWS", icon: FaCode },
+      { name: "Docker", icon: FaCode },
+      { name: "GitHub Actions", icon: FaGithub },
     ],
   },
 ];
 
 export default function Skills() {
   return (
-    <section
-      id="skills"
-      className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24"
-    >
-      {/* Heading */}
-      <div className="text-center mb-12">
-        <p className="caveat text-2xl md:text-3xl text-[#6f8253]">
-          tools I work with
+    <section id="skills" className="mx-auto max-w-7xl px-6 py-14 sm:px-8 lg:px-10 lg:py-16">
+      <div className="mb-8 flex flex-col gap-2 sm:mb-10 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <p className="caveat text-xl text-[#6f8253] sm:text-2xl">what I work with</p>
+          <h2 className="playfair mt-1 text-3xl font-bold text-[#242424] sm:text-4xl">
+            Technical Skills
+          </h2>
+        </div>
+        <p className="max-w-sm text-sm leading-6 text-[#77736b] sm:text-right">
+          A snapshot of the languages, frameworks and tools I use to build software.
         </p>
-
-        <h2
-          className="
-            playfair
-            text-4xl
-            md:text-5xl
-            font-bold
-            mt-2
-            text-[#242424]
-          "
-        >
-          Technical Skills
-        </h2>
       </div>
 
-      {/* Skill Groups */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
         {skillGroups.map((group, index) => (
           <motion.div
             key={group.title}
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.08,
-            }}
-            className="
-              paper
-              paper-shadow
-              rounded-xl
-              p-6
-              relative
-              transition
-              hover:-translate-y-1
-            "
+            viewport={{ once: true, amount: 0.15 }}
+            transition={{ duration: 0.35, delay: index * 0.05 }}
+            className="rounded-xl border border-[#e7e0d5] bg-white/90 p-4 shadow-[0_3px_12px_rgba(40,35,25,0.04)] transition duration-200 hover:-translate-y-0.5 hover:shadow-[0_7px_18px_rgba(40,35,25,0.07)] sm:p-5"
           >
-            {/* Paper Label */}
-            <div
-              className={`
-                absolute
-                -top-3
-                left-5
-                ${group.accent}
-                px-4
-                py-1
-                rounded-md
-                text-sm
-                font-medium
-                rotate-[-2deg]
-              `}
-            >
+            <h3 className="mb-3 text-xs font-semibold uppercase tracking-[0.13em] text-[#64764f]">
               {group.title}
-            </div>
-
-            {/* Skills */}
-            <div className="pt-5 space-y-2">
+            </h3>
+            <div className="flex flex-wrap gap-2">
               {group.skills.map((skill) => {
                 const Icon = skill.icon;
-
                 return (
-                  <div
+                  <span
                     key={skill.name}
-                    className="
-                      flex
-                      items-center
-                      gap-3
-                      py-2.5
-                      px-2
-                      rounded-lg
-                      text-[#444]
-                      transition
-                      hover:bg-[#f4f1e9]
-                    "
+                    className="inline-flex items-center gap-1.5 rounded-md border border-[#e9e6de] bg-[#fbfaf7] px-2.5 py-1.5 text-[13px] font-medium text-[#44433e]"
                   >
-                    {/* Icon */}
-                    <span
-                      className="
-                        flex
-                        items-center
-                        justify-center
-                        w-9
-                        h-9
-                        rounded-lg
-                        bg-[#eef1e8]
-                        text-[#63764d]
-                        shrink-0
-                      "
-                    >
-                      <Icon className="text-[19px]" />
-                    </span>
-
-                    {/* Skill Name */}
-                    <span className="text-sm md:text-base font-medium">
-                      {skill.name}
-                    </span>
-                  </div>
+                    <Icon className="shrink-0 text-[13px] text-[#71835d]" aria-hidden="true" />
+                    {skill.name}
+                  </span>
                 );
               })}
             </div>
