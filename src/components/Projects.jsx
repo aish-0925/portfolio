@@ -5,7 +5,6 @@ import {
   FaArrowUpRightFromSquare,
   FaChevronLeft,
   FaChevronRight,
-  FaArrowsLeftRight,
 } from "react-icons/fa6";
 
 import projects from "../data/projects";
@@ -188,40 +187,38 @@ export default function Projects() {
       </div>
 
       <div className="relative">
-        <div
-          ref={trackRef}
-          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          aria-label="Scrollable project cards"
-        >
-          {projects.map((project, index) => (
-            <ProjectCard key={project.title} project={project} index={index} />
-          ))}
+        <div className="relative">
+          <div
+            ref={trackRef}
+            className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-1 pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            aria-label="Scrollable project cards"
+          >
+            {projects.map((project, index) => (
+              <ProjectCard key={project.title} project={project} index={index} />
+            ))}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => scrollProjects(-1)}
+            aria-label="Scroll to previous project"
+            className="absolute left-0 top-1/2 z-20 flex h-10 w-10 -translate-x-1/3 -translate-y-1/2 items-center justify-center rounded-full border border-[#d8d1c6] bg-[#fffefa]/95 text-[#52633b] shadow-md backdrop-blur-sm transition hover:border-[#6f8253] hover:bg-[#f1eee7] sm:h-11 sm:w-11"
+          >
+            <FaChevronLeft size={14} />
+          </button>
+          <button
+            type="button"
+            onClick={() => scrollProjects(1)}
+            aria-label="Scroll to next project"
+            className="absolute right-0 top-1/2 z-20 flex h-10 w-10 translate-x-1/3 -translate-y-1/2 items-center justify-center rounded-full border border-[#d8d1c6] bg-[#fffefa]/95 text-[#52633b] shadow-md backdrop-blur-sm transition hover:border-[#6f8253] hover:bg-[#f1eee7] sm:h-11 sm:w-11"
+          >
+            <FaChevronRight size={14} />
+          </button>
         </div>
 
-        <div className="mt-5 flex flex-col items-center gap-3">
-          <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-[#8a877d]">
-            <FaArrowsLeftRight className="text-[#71865a]" size={14} />
-            <span>Scroll to explore projects</span>
-          </div>
-          <div className="flex items-center justify-center gap-3">
-            <button
-              type="button"
-              onClick={() => scrollProjects(-1)}
-              aria-label="Scroll to previous project"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d8d1c6] bg-[#fffefa] text-[#52633b] shadow-sm transition hover:border-[#6f8253] hover:bg-[#f1eee7]"
-            >
-              <FaChevronLeft size={14} />
-            </button>
-            <button
-              type="button"
-              onClick={() => scrollProjects(1)}
-              aria-label="Scroll to next project"
-              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d8d1c6] bg-[#fffefa] text-[#52633b] shadow-sm transition hover:border-[#6f8253] hover:bg-[#f1eee7]"
-            >
-              <FaChevronRight size={14} />
-            </button>
-          </div>
-        </div>
+        <p className="mt-3 text-center text-xs font-medium tracking-wide text-[#8a877d]">
+          Use the side arrows or swipe to explore projects
+        </p>
       </div>
     </section>
   );
