@@ -5,6 +5,7 @@ import {
   FaArrowUpRightFromSquare,
   FaChevronLeft,
   FaChevronRight,
+  FaArrowsLeftRight,
 } from "react-icons/fa6";
 
 import projects from "../data/projects";
@@ -197,11 +198,12 @@ export default function Projects() {
           ))}
         </div>
 
-        <div className="mt-4 flex items-center justify-between">
-          <p className="text-xs text-[#8a877d]">
-            Scroll or swipe to explore all projects
-          </p>
-          <div className="flex gap-2">
+        <div className="mt-5 flex flex-col items-center gap-3">
+          <div className="flex items-center gap-2 text-xs font-medium tracking-wide text-[#8a877d]">
+            <FaArrowsLeftRight className="text-[#71865a]" size={14} />
+            <span>Scroll to explore projects</span>
+          </div>
+          <div className="flex items-center justify-center gap-3">
             <button
               type="button"
               onClick={() => scrollProjects(-1)}
