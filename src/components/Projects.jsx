@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import {
   FaGithub,
@@ -28,9 +28,9 @@ function ProjectCard({ project, index }) {
       initial={{ opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.15 }}
-      transition={{ duration: 0.45, delay: index * 0.08 }}
+      transition={{ duration: 0.45, delay: index * 0.06 }}
       whileHover={{ y: -5 }}
-      className="relative flex h-full flex-col overflow-hidden rounded-xl border border-[#e9e1d6] bg-white p-4 shadow-[0_5px_18px_rgba(45,38,25,0.06)] transition-shadow hover:shadow-[0_10px_26px_rgba(45,38,25,0.10)] sm:p-5"
+      className="relative flex h-full min-h-[600px] min-w-[min(88vw,420px)] snap-start flex-col overflow-hidden rounded-xl border border-[#e9e1d6] bg-white p-4 shadow-[0_5px_18px_rgba(45,38,25,0.06)] transition-shadow hover:shadow-[0_10px_26px_rgba(45,38,25,0.10)] sm:min-w-[420px] md:min-w-[calc((100%-1.5rem)/2)] xl:min-w-[calc((100%-3rem)/3)] sm:p-5"
     >
       {/* Subtle scrapbook tape detail */}
       <div className="absolute left-1/2 top-0 z-10 h-5 w-20 -translate-x-1/2 -rotate-2 bg-[#d9c2f1]/70" />
@@ -45,8 +45,11 @@ function ProjectCard({ project, index }) {
             className="h-48 w-full object-cover object-top sm:h-52"
           />
         ) : (
-          <div className="flex h-48 items-center justify-center text-sm text-[#777]">
-            Project preview
+          <div className="flex h-48 flex-col items-center justify-center gap-2 text-sm text-[#777] sm:h-52">
+            <span className="playfair text-2xl font-semibold text-[#71865a]">
+              {project.title}
+            </span>
+            <span>Project preview coming soon</span>
           </div>
         )}
 
@@ -87,11 +90,9 @@ function ProjectCard({ project, index }) {
       </div>
 
       <div className="flex flex-1 flex-col px-1 pb-1 pt-5">
-        <div className="mb-2 flex flex-wrap items-center justify-between gap-2">
-          <span className="text-[11px] font-semibold uppercase tracking-[0.12em] text-[#6f8253]">
-            {project.category || "Featured Project"}
-          </span>
-        </div>
+        <span className="mb-2 text-[11px] font-semibold uppercase tracking-[0.12em] text-[#6f8253]">
+          {project.category || "Featured Project"}
+        </span>
 
         <h3 className="playfair text-2xl font-bold leading-tight text-[#242424]">
           {project.title}
@@ -155,6 +156,18 @@ function ProjectCard({ project, index }) {
 }
 
 export default function Projects() {
+  const trackRef = useRef(null);
+
+  const scrollProjects = (direction) => {
+    if (!trackRef.current) return;
+    const firstCard = trackRef.current.querySelector("article");
+    const cardWidth = firstCard?.getBoundingClientRect().width || 360;
+    trackRef.current.scrollBy({
+      left: direction * (cardWidth + 24),
+      behavior: "smooth",
+    });
+  };
+
   return (
     <section
       id="projects"
@@ -173,10 +186,40 @@ export default function Projects() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 items-stretch gap-6 md:grid-cols-2 xl:grid-cols-3">
-        {projects.map((project, index) => (
-          <ProjectCard key={project.title} project={project} index={index} />
-        ))}
+      <div className="relative">
+        <div
+          ref={trackRef}
+          className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth pb-5 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          aria-label="Scrollable project cards"
+        >
+          {projects.map((project, index) => (
+            <ProjectCard key={project.title} project={project} index={index} />
+          ))}
+        </div>
+
+        <div className="mt-4 flex items-center justify-between">
+          <p className="text-xs text-[#8a877d]">
+            Scroll or swipe to explore all projects
+          </p>
+          <div className="flex gap-2">
+            <button
+              type="button"
+              onClick={() => scrollProjects(-1)}
+              aria-label="Scroll to previous project"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d8d1c6] bg-[#fffefa] text-[#52633b] shadow-sm transition hover:border-[#6f8253] hover:bg-[#f1eee7]"
+            >
+              <FaChevronLeft size={14} />
+            </button>
+            <button
+              type="button"
+              onClick={() => scrollProjects(1)}
+              aria-label="Scroll to next project"
+              className="flex h-10 w-10 items-center justify-center rounded-full border border-[#d8d1c6] bg-[#fffefa] text-[#52633b] shadow-sm transition hover:border-[#6f8253] hover:bg-[#f1eee7]"
+            >
+              <FaChevronRight size={14} />
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
