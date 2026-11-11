@@ -48,6 +48,29 @@ const projects = [
     github: "https://github.com/aish-0925/oral_evaluator",
     demo: "",
   },
+  {
+    title: "MedInsight",
+    category: "Full Stack Development",
+    subtitle: "Healthcare Resource & Feedback Intelligence Platform",
+    images: [],
+    tech: [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT",
+    ],
+    description:
+      "A healthcare management platform designed to organize hospital resources and collect feedback for better operational insights.",
+    highlights: [
+      "Role-based access for admins, doctors, nurses and analysts",
+      "Patient, bed and equipment management with feedback tracking",
+    ],
+    github: "",
+    demo: "",
+  },
 ];
 
 export default projects;
