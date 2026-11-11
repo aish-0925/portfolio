@@ -102,4 +102,8 @@ export default function Certifications() {
       </div>
     </section>
   );
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> b3554b7bfeb13a333c28c68091fb77423ced3b20
