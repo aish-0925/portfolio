@@ -216,12 +216,6 @@ export default function Projects() {
           </button>
         </div>
 
-<<<<<<< HEAD
-=======
-        <p className="mt-3 text-center text-xs font-medium tracking-wide text-[#8a877d]">
-          Use the side arrows or swipe to explore projects
-        </p>
->>>>>>> b3554b7bfeb13a333c28c68091fb77423ced3b20
       </div>
     </section>
   );

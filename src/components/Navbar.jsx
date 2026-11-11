@@ -135,8 +135,4 @@ export default function Navbar() {
       )}
     </>
   );
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b3554b7bfeb13a333c28c68091fb77423ced3b20
