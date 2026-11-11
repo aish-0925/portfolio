@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { FaArrowUpRightFromSquare, FaAward } from "react-icons/fa6";
 
 const certifications = [
   {
@@ -43,133 +44,62 @@ export default function Certifications() {
   return (
     <section
       id="certifications"
-      className="max-w-7xl mx-auto px-6 lg:px-10 py-24"
+      className="max-w-7xl mx-auto px-6 lg:px-10 py-20 lg:py-24"
     >
-      {/* Section Heading */}
-      <div className="text-center mb-14">
+      <div className="text-center mb-12 md:mb-14">
         <p className="caveat text-3xl text-[#6f8253]">
           continuous learning
         </p>
-
-        <h2 className="playfair text-5xl md:text-6xl font-bold mt-2">
+        <h2 className="playfair text-4xl md:text-5xl font-bold mt-2 text-[#202020]">
           Certifications
         </h2>
+        <p className="mt-4 text-[#777] text-sm md:text-base">
+          A few milestones from my continuous learning journey.
+        </p>
       </div>
 
-      {/* Certification Table */}
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="
-          bg-white
-          border
-          border-[#e7dfd2]
-          rounded-xl
-          paper-shadow
-          overflow-hidden
-        "
-      >
-        {/* Table Header */}
-        <div
-          className="
-            grid
-            grid-cols-[1fr_180px_170px]
-            gap-6
-            items-center
-            px-7
-            py-4
-            bg-[#f5f0e8]
-            border-b
-            border-[#e7dfd2]
-          "
-        >
-          <p className="text-xs uppercase tracking-wider text-[#777] font-medium">
-            Certification
-          </p>
-
-          <p className="text-xs uppercase tracking-wider text-[#777] font-medium">
-            Issuer
-          </p>
-
-          <p className="text-xs uppercase tracking-wider text-[#777] font-medium text-center">
-            Certificate
-          </p>
-        </div>
-
-        {/* Certification Rows */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-6">
         {certifications.map((certificate, index) => (
-          <motion.div
+          <motion.article
             key={certificate.title}
-            initial={{ opacity: 0, y: 10 }}
+            initial={{ opacity: 0, y: 22 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 0.4,
-              delay: index * 0.08,
-            }}
-            className="
-              grid
-              grid-cols-[1fr_180px_170px]
-              gap-6
-              items-center
-              px-7
-              py-5
-              border-b
-              border-[#eee7dc]
-              last:border-b-0
-              hover:bg-[#fcfaf6]
-              transition-colors
-            "
+            transition={{ duration: 0.45, delay: index * 0.06 }}
+            className="group relative flex flex-col min-h-[220px] rounded-2xl border border-[#e7dfd2] bg-[#fffefa] p-6 shadow-[0_8px_24px_rgba(70,65,50,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_14px_30px_rgba(70,65,50,0.10)]"
           >
-            {/* Certification */}
-            <div className="flex items-center gap-3 min-w-0">
-              <span
-                className={`
-                  w-2.5
-                  h-2.5
-                  rounded-full
-                  ${certificate.accent}
-                  shrink-0
-                `}
-              />
-
-              <h3 className="playfair text-lg font-semibold leading-6">
-                {certificate.title}
-              </h3>
+            <div className="flex items-start justify-between gap-4">
+              <span className={`flex h-11 w-11 items-center justify-center rounded-xl ${certificate.accent} text-[#555]`}>
+                <FaAward size={19} />
+              </span>
+              <span className="text-xs font-medium uppercase tracking-[0.12em] text-[#929084]">
+                Certificate {String(index + 1).padStart(2, "0")}
+              </span>
             </div>
 
-            {/* Issuer */}
-            <p className="text-sm text-[#777]">
-              {certificate.issuer}
-            </p>
+            <div className="mt-5 flex-1">
+              <h3 className="playfair text-xl font-semibold leading-snug text-[#292929]">
+                {certificate.title}
+              </h3>
+              <p className="mt-2 text-sm text-[#777]">
+                Issued by <span className="font-semibold text-[#687b4e]">{certificate.issuer}</span>
+              </p>
+            </div>
 
-            {/* View Certificate */}
-            <div className="text-center">
+            <div className="mt-5 border-t border-[#eee7dc] pt-4">
               <a
                 href={certificate.pdf}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="
-                  inline-block
-                  text-sm
-                  font-medium
-                  text-[#6f8253]
-                  border-b
-                  border-[#6f8253]
-                  hover:text-[#52633d]
-                  hover:border-[#52633d]
-                  transition-colors
-                "
+                className="inline-flex items-center gap-2 text-sm font-semibold text-[#6f8253] transition-colors hover:text-[#52633d]"
               >
-                View Certificate 
+                View Certificate
+                <FaArrowUpRightFromSquare size={12} />
               </a>
             </div>
-          </motion.div>
+          </motion.article>
         ))}
-      </motion.div>
+      </div>
     </section>
   );
 }
-

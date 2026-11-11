@@ -43,7 +43,7 @@ export default function Publication() {
             w-28
             h-7
             bg-[#d9c2f1]/70
-            rotate-[-2deg]
+            rotate-2
           "
         />
 
