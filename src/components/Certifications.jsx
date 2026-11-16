@@ -35,7 +35,7 @@ const certifications = [
   {
     title: "MongoDB - The Complete Developer's Guide",
     issuer: "Udemy",
-    pdf: "/certificates/MongoDB-Udemy.pdf",
+    pdf: "/certificates/MongoDB- Udemy.pdf",
     accent: "bg-[#d9c2f1]",
   },
 ];
